@@ -2,10 +2,9 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { InputAdornment, OutlinedInput } from '@material-ui/core';
+import { InputAdornment } from '@material-ui/core';
 import {
   Menu,
-  Add,
   NotificationsNone,
   Home,
   Settings,
@@ -33,7 +32,7 @@ const NavbarComponent = () => {
           <Navbar.Icon>
             <Home onClick={() => history.push('/')} />
           </Navbar.Icon>
-          <OutlinedInput
+          <Navbar.SearchInput
             htmlFor="search-input"
             name="search"
             placeholder="Find"
@@ -45,9 +44,6 @@ const NavbarComponent = () => {
           />
         </Navbar.Content>
         <Navbar.Content>
-          <Navbar.Icon>
-            <Add />
-          </Navbar.Icon>
           <Navbar.Icon>
             <NotificationsNone />
           </Navbar.Icon>

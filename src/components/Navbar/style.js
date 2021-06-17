@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { OutlinedInput } from '@material-ui/core';
 
 const Navbar = styled.nav`
   position: fixed;
@@ -8,6 +9,10 @@ const Navbar = styled.nav`
 
   background-color: ${(props) => props.theme.palette.primary.main};
   z-index: 1;
+
+  @media screen and (max-width: ${(props) => `${props.theme.breakpoints.values.md}px`}) {
+    height: 100px;
+  }
 `;
 
 Navbar.Container = styled.div`
@@ -18,6 +23,10 @@ Navbar.Container = styled.div`
   width: calc(100% - 50px);
   height: 100%;
   padding: 0 25px;
+
+  @media screen and (max-width: ${(props) => `${props.theme.breakpoints.values.md}px`}) {
+    height: 50px;
+  }
 `;
 
 Navbar.Content = styled.div`
@@ -43,6 +52,13 @@ Navbar.Icon = styled.div`
   margin: 0 10px;
 
   cursor: pointer;
+`;
+
+Navbar.SearchInput = styled(OutlinedInput)`
+  position: absolute;
+
+  top: 50px;
+  width: 90%;
 `;
 
 export default Navbar;
