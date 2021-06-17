@@ -33,7 +33,6 @@ const LeftMenu = () => {
             <IconBoard
               icon={board.icon?.name}
               color={board.icon?.color}
-              brightness={board.icon?.brightness}
             />
             <Menu.Item.Title>{board.name}</Menu.Item.Title>
             <Menu.Item.Quantity>{board.cards?.length}</Menu.Item.Quantity>
