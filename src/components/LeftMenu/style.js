@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 const Menu = styled.div`
-  width: ${(props) => (props.fullWidth ? '250px' : '50px')};
+  width: ${(props) => (props.fullWidth ? '250px' : '60px')};
   height: 100%;
+
+  transition: .2s;
 
   background-color: ${(props) => (props.theme.palette.type === 'light'
     ? props.theme.palette.grey[100]
@@ -13,7 +15,9 @@ Menu.Content = styled.div`
   display: flex;
   flex-direction: column;
 
-  padding: ${(props) => (props.fullWidth ? '50px 30px' : '50px 7px')};
+  transition: .2s;
+
+  padding: ${(props) => (props.fullWidth ? '50px 20px' : '50px 7px')};
   width: ${(props) => (props.fullWidth ? 'calc(100% - 60px)' : 'calc(100% - 14px)')};
 `;
 
@@ -22,16 +26,20 @@ Menu.Item = styled.div`
   flex-direction: row;
   align-items: center;
 
+  transition: .2s;
+
   margin: 5px 0;
-  padding: ${(props) => (props.fullWidth ? '5px 10px' : '5px')};
-  width: ${(props) => (props.fullWidth ? 'calc(100% - 20px)' : 'calc(100% - 10px)')};
+  padding: ${(props) => (props.fullWidth ? '10px 10px' : '10px 10px')};
+  width: ${(props) => (props.fullWidth ? 'calc(100%)' : 'calc(100% - 20px)')};
 
   border-radius: 5px;
-  background-color: ${(props) => (props.active ? props.theme.palette.background.default : 'transparent')};
+  background-color: ${(props) => (props.active ? props.theme.palette.background.default : 'transparent')}; 
   cursor: pointer;
 
   &:hover {
     background-color: ${(props) => props.theme.palette.background.default};
+    
+    transition: .2s;
   }
 
   & span:not(.material-icons) {
@@ -53,6 +61,7 @@ Menu.Item.Icon = styled.div`
 
 Menu.Item.Title = styled.span`
   font-size: 14px;
+  white-space: nowrap;
   color: ${(props) => props.theme.palette.text.primary};
 `;
 
