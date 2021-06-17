@@ -55,10 +55,12 @@ Navbar.Icon = styled.div`
 `;
 
 Navbar.SearchInput = styled(OutlinedInput)`
-  position: absolute;
+  @media screen and (max-width: ${(props) => `${props.theme.breakpoints.values.md}px`}) {
+    position: absolute;
 
-  top: 50px;
-  width: 90%;
+    top: 50px;
+    width: 90%;
+  }
 `;
 
 export default Navbar;
