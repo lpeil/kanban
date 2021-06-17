@@ -55,6 +55,10 @@ Navbar.Icon = styled.div`
 `;
 
 Navbar.SearchInput = styled(OutlinedInput)`
+  .MuiInputBase-inputAdornedStart {
+    padding: 0;
+  }
+
   @media screen and (max-width: ${(props) => `${props.theme.breakpoints.values.md}px`}) {
     position: absolute;
 

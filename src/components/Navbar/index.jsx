@@ -33,7 +33,6 @@ const NavbarComponent = () => {
             <Home onClick={() => history.push('/')} />
           </Navbar.Icon>
           <Navbar.SearchInput
-            htmlFor="search-input"
             name="search"
             placeholder="Find"
             startAdornment={(
