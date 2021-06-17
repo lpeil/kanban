@@ -1,5 +1,11 @@
 import React from 'react';
 
-const Modals = () => <div />;
+import ModalNewBoard from './NewBoard';
+
+const Modals = () => (
+  <>
+    <ModalNewBoard />
+  </>
+);
 
 export default Modals;
