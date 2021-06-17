@@ -6,6 +6,7 @@ import {
 } from '@material-ui/core';
 
 import DialogTitle from './components/DialogTitle';
+import IconPicker from '../IconPicker';
 
 import { toggleModalNewBoard } from '../../store/modules/modals/actions';
 import { createBoard } from '../../store/modules/boards/actions';
@@ -15,7 +16,7 @@ const ModalNewBoard = () => {
   const isModalOpen = useSelector((state) => state.modals.newBoard);
 
   const [name, setName] = useState('');
-  const [icon, setIcon] = useState('');
+  const [icon, setIcon] = useState('insert_drive_file');
   const [color, setColor] = useState('');
 
   const handleClose = () => {
@@ -35,6 +36,9 @@ const ModalNewBoard = () => {
 
     dispatch(createBoard(board));
     handleClose();
+    setName('');
+    setIcon('insert_drive_file');
+    setColor('');
   };
 
   return (
@@ -60,14 +64,12 @@ const ModalNewBoard = () => {
               />
             </Grid>
             <Grid item>
-              <TextField
-                type="text"
+              <IconPicker
                 name="icon"
                 label="Board Icon"
-                variant="outlined"
-                fullWidth
+                color={color}
                 value={icon}
-                onChange={(e) => setIcon(e.target.value)}
+                setValue={setIcon}
               />
             </Grid>
             <Grid item>
