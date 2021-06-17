@@ -17,6 +17,15 @@ const ContentDiv = styled.div`
   & .scrollarea-content {
     padding: 55px 50px 0;
   }
+
+  @media screen and (max-width: ${(props) => `${props.theme.breakpoints.values.md}px`}) {
+    width: 100%;
+    height: calc(100vh - 100px);
+
+    & .scrollarea {
+      height: calc(100vh - 100px);
+    }
+  }
 `;
 
 const Content = ({ children }) => {

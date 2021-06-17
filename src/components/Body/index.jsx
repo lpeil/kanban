@@ -12,6 +12,11 @@ const Body = styled.div`
   background-color: ${(props) => props.theme.palette.background.default};
 
   overflow: hidden;
+
+  @media screen and (max-width: ${(props) => `${props.theme.breakpoints.values.md}px`}) {
+    top: 100px;
+    height: calc(100vh - 100px);
+  }
 `;
 
 export default Body;

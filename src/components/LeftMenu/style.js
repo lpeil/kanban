@@ -4,18 +4,27 @@ const Menu = styled.div`
   width: ${(props) => (props.fullWidth ? '250px' : '60px')};
   height: 100%;
 
-  transition: .2s;
+  transition: 0.2s;
 
   background-color: ${(props) => (props.theme.palette.type === 'light'
     ? props.theme.palette.grey[100]
     : props.theme.palette.grey[800])};
+
+  @media screen and (max-width: ${(props) => `${props.theme.breakpoints.values.md}px`}) {
+    position: fixed;
+    width: 250px;
+
+    left: ${(props) => (props.fullWidth ? '0' : '-250px')};
+
+    z-index: 10;
+  }
 `;
 
 Menu.Content = styled.div`
   display: flex;
   flex-direction: column;
 
-  transition: .2s;
+  transition: 0.2s;
 
   padding: ${(props) => (props.fullWidth ? '50px 20px' : '50px 7px')};
   width: ${(props) => (props.fullWidth ? 'calc(100% - 60px)' : 'calc(100% - 14px)')};
@@ -26,20 +35,20 @@ Menu.Item = styled.div`
   flex-direction: row;
   align-items: center;
 
-  transition: .2s;
+  transition: 0.2s;
 
   margin: 5px 0;
   padding: ${(props) => (props.fullWidth ? '10px 10px' : '10px 10px')};
   width: ${(props) => (props.fullWidth ? 'calc(100%)' : 'calc(100% - 20px)')};
 
   border-radius: 5px;
-  background-color: ${(props) => (props.active ? props.theme.palette.background.default : 'transparent')}; 
+  background-color: ${(props) => (props.active ? props.theme.palette.background.default : 'transparent')};
   cursor: pointer;
 
   &:hover {
     background-color: ${(props) => props.theme.palette.background.default};
-    
-    transition: .2s;
+
+    transition: 0.2s;
   }
 
   & span:not(.material-icons) {
