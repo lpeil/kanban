@@ -17,6 +17,10 @@ const ContentDiv = styled.div`
   & .scrollarea-content {
     padding: 55px 50px 0;
   }
+
+  @media screen and (max-width: ${(props) => `${props.theme.breakpoints.values.md}px`}) {
+    width: 100%;
+  }
 `;
 
 const Content = ({ children }) => {
