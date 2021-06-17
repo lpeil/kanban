@@ -8,6 +8,8 @@ const ContentDiv = styled.div`
   width: calc(100% - ${(props) => (props.fullWidth ? '50px' : '250px')});
   height: calc(100vh - 50px);
 
+  transition: .2s;
+
   & .scrollarea {
     height: 100%;
   }
