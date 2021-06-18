@@ -4,3 +4,11 @@ export function createBoard(board) {
     board,
   };
 }
+
+export function updateBoard(name, board) {
+  return {
+    type: '@boards/UPDATE',
+    board,
+    name,
+  };
+}
