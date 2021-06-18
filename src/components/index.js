@@ -1,9 +1,10 @@
 import Body from './Body';
 import Content from './Content';
 import LeftMenu from './LeftMenu';
-import Navbar from './Navbar';
+import List from './List';
 import Modals from './Modals';
+import Navbar from './Navbar';
 
 export {
-  Navbar, LeftMenu, Body, Content, Modals,
+  Navbar, LeftMenu, Body, Content, Modals, List,
 };
