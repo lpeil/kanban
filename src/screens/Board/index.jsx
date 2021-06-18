@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { Icon } from '@material-ui/core';
 import ScrollArea from 'react-scrollbar';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 import Board from './style';
 import { List } from '../../components';
-import { updateBoard } from '../../store/modules/boards/actions';
 
 const BoardScreen = () => {
   const { name } = useParams();
   const history = useHistory();
-  const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards);
   const [board, setBoard] = useState({});
 
@@ -40,9 +40,11 @@ const BoardScreen = () => {
           contentClassName="list-items-content"
         >
           <Board.Items>
-            {board.list?.map((list, key) => (
-              <List key={key} list={list} />
-            ))}
+            <DndProvider backend={HTML5Backend}>
+              {board.list?.map((list, key) => (
+                <List key={key} list={list} boardId={board.id} />
+              ))}
+            </DndProvider>
           </Board.Items>
         </ScrollArea>
       </Board.Body>

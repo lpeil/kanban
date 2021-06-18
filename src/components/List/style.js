@@ -57,6 +57,7 @@ List.Cards = styled.div`
   flex-direction: column;
 
   width: 100%;
+  height: 100%;
   margin: 16px 0;
 `;
 
@@ -68,6 +69,7 @@ const Card = styled(Paper)`
 
   color: ${(props) => props.theme.palette.text.primary};
   background-color: ${(props) => props.theme.palette.background.paper};
+  opacity: ${(props) => (props.hovering ? 0 : 1)};
   cursor: pointer;
 `;
 
