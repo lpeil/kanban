@@ -29,10 +29,10 @@ const ContentDiv = styled.div`
 `;
 
 const Content = ({ children }) => {
-  const isLeftMenuOpen = useSelector((state) => state.menu.leftMenu);
+  const isDrawerOpen = useSelector((state) => state.app.drawer);
 
   return (
-    <ContentDiv fullWidth={isLeftMenuOpen}>
+    <ContentDiv fullWidth={isDrawerOpen}>
       <ScrollArea speed={0.8} vertical smoothScrolling>
         {children}
       </ScrollArea>
