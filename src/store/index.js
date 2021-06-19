@@ -1,10 +1,24 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { routerMiddleware } from 'connected-react-router';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import history from '../routes/history';
 import rootReducer from './modules/rootReducer';
+import rootSaga from './modules/rootSaga';
+
+const sagaMonitor = process.env.NODE_ENV === 'development' ? console.tron.createSagaMonitor() : null;
+
+const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
+
+const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
 const enhancer = process.env.NODE_ENV === 'development'
-  ? composeWithDevTools(applyMiddleware())
-  : applyMiddleware();
+  ? composeWithDevTools(console.tron.createEnhancer(), applyMiddleware(...middlewares))
+  : applyMiddleware(...middlewares);
 
-export default createStore(rootReducer, compose(enhancer));
+const store = createStore(rootReducer(history), compose(enhancer));
+
+sagaMiddleware.run(rootSaga);
+
+export default store;
