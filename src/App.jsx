@@ -9,7 +9,7 @@ import './stylesheets/index.css';
 import { lightTheme, darkTheme } from './stylesheets/theme';
 
 const App = () => {
-  const themeSelected = useSelector((state) => state.theme);
+  const themeSelected = useSelector((state) => state.app.theme);
   const [theme, setTheme] = useState(lightTheme);
 
   useEffect(() => {
