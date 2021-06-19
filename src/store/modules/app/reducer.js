@@ -19,11 +19,19 @@ export default function app(state = initialState, action) {
   switch (action?.type) {
     case '@app/TOGGLE_DRAWER':
       return produce(state, (draft) => {
-        draft.drawerOpen = !state.drawerOpen;
+        draft.drawer = !state.drawer;
       });
     case '@app/LOAD_UI':
       return produce(state, (draft) => {
         draft.loadUI = true;
+      });
+    case 'CHANGE_THEME':
+      return produce(state, (draft) => {
+        draft.theme = action.theme;
+      });
+    case 'TOGGLE_MODAL':
+      return produce(state, (draft) => {
+        draft.modal[action.modal] = !draft.modal[action.modal];
       });
     default:
       return state;
