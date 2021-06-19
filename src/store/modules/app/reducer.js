@@ -25,11 +25,11 @@ export default function app(state = initialState, action) {
       return produce(state, (draft) => {
         draft.loadUI = true;
       });
-    case 'CHANGE_THEME':
+    case '@app/CHANGE_THEME':
       return produce(state, (draft) => {
         draft.theme = action.theme;
       });
-    case 'TOGGLE_MODAL':
+    case '@app/TOGGLE_MODAL':
       return produce(state, (draft) => {
         draft.modal[action.modal] = !draft.modal[action.modal];
       });
