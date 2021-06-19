@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -7,13 +8,13 @@ import { Add } from '@material-ui/icons';
 import Menu from './style';
 import IconBoard from './IconBoard';
 
-import { toggleModalNewBoard } from '../../store/modules/modals/actions';
+import { toggleModal } from '../../store/modules/app/actions';
 
 const LeftMenu = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boards);
-  const isLeftMenuOpen = useSelector((state) => state.menu.leftMenu);
+  const isDrawerOpen = useSelector((state) => state.app.drawer);
   const [location, setLocation] = useState(history.location.pathname);
 
   history.listen((loc) => {
@@ -21,13 +22,13 @@ const LeftMenu = () => {
   });
 
   return (
-    <Menu fullWidth={!isLeftMenuOpen}>
-      <Menu.Content fullWidth={!isLeftMenuOpen}>
-        {boards.map((board, key) => (
+    <Menu fullWidth={!isDrawerOpen}>
+      <Menu.Content fullWidth={!isDrawerOpen}>
+        {boards?.map((board, key) => (
           <Menu.Item
             key={key}
             active={location === `/b/${board.name}`}
-            fullWidth={!isLeftMenuOpen}
+            fullWidth={!isDrawerOpen}
             onClick={() => history.push(`/b/${board.name}`)}
           >
             <IconBoard
@@ -38,7 +39,7 @@ const LeftMenu = () => {
             <Menu.Item.Quantity>{board.cards?.length}</Menu.Item.Quantity>
           </Menu.Item>
         ))}
-        <Menu.Item fullWidth={!isLeftMenuOpen} onClick={() => dispatch(toggleModalNewBoard())}>
+        <Menu.Item fullWidth={!isDrawerOpen} onClick={() => dispatch(toggleModal('createBoard'))}>
           <Menu.Item.Icon>
             <Add color="primary" />
           </Menu.Item.Icon>
