@@ -1,15 +1,11 @@
 import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
 
-import boards from './boards/reducer';
-import cards from './cards/reducer';
-import theme from './theme/reducer';
-import modals from './modals/reducer';
-import menu from './menu/reducer';
+import app from './app/reducer';
+import board from './board/reducer';
 
-export default combineReducers({
-  boards,
-  cards,
-  theme,
-  menu,
-  modals,
+export default (history) => combineReducers({
+  board,
+  app,
+  router: connectRouter(history),
 });

@@ -8,33 +8,33 @@ import {
 import DialogTitle from './components/DialogTitle';
 import IconPicker from '../IconPicker';
 
-import { toggleModalNewBoard } from '../../store/modules/modals/actions';
-import { createBoard } from '../../store/modules/boards/actions';
+import { toggleModal } from '../../store/modules/app/actions';
+// import { createBoard } from '../../store/modules/boards/actions';
 
 const ModalNewBoard = () => {
   const dispatch = useDispatch();
-  const isModalOpen = useSelector((state) => state.modals.newBoard);
+  const isModalOpen = useSelector((state) => state.app.modal.createBoard);
 
   const [name, setName] = useState('');
   const [icon, setIcon] = useState('insert_drive_file');
   const [color, setColor] = useState('');
 
   const handleClose = () => {
-    dispatch(toggleModalNewBoard());
+    dispatch(toggleModal('createBoard'));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const board = {
-      name,
-      icon: {
-        name: icon,
-        color,
-      },
-    };
+    // const board = {
+    //   name,
+    //   icon: {
+    //     name: icon,
+    //     color,
+    //   },
+    // };
 
-    dispatch(createBoard(board));
+    // dispatch(createBoard(board));
     handleClose();
     setName('');
     setIcon('insert_drive_file');

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -14,20 +15,19 @@ import {
 } from '@material-ui/icons';
 import Navbar from './style';
 
-import { toggleLeftMenu } from '../../store/modules/menu/actions';
-import { changeToDarkMode, changeToLightMode } from '../../store/modules/theme/actions';
+import { toggleDrawer, changeAppTheme } from '../../store/modules/app/actions';
 
 const NavbarComponent = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const themeSelected = useSelector((state) => state.theme);
+  const themeSelected = useSelector((state) => state.app.theme);
 
   return (
     <Navbar>
       <Navbar.Container>
         <Navbar.Content>
           <Navbar.Icon>
-            <Menu onClick={() => dispatch(toggleLeftMenu())} />
+            <Menu onClick={() => dispatch(toggleDrawer())} />
           </Navbar.Icon>
           <Navbar.Icon>
             <Home onClick={() => history.push('/')} />
@@ -48,9 +48,9 @@ const NavbarComponent = () => {
           </Navbar.Icon>
           <Navbar.Icon>
             {themeSelected === 'dark' ? (
-              <DarkTheme onClick={() => dispatch(changeToLightMode())} />
+              <DarkTheme onClick={() => dispatch(changeAppTheme('light'))} />
             ) : (
-              <LightTheme onClick={() => dispatch(changeToDarkMode())} />
+              <LightTheme onClick={() => dispatch(changeAppTheme('dark'))} />
             )}
           </Navbar.Icon>
           <Navbar.Icon>

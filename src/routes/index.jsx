@@ -1,5 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
+import { Switch, Route } from 'react-router-dom';
+
+import history from './history';
 
 import Board from '../screens/Board';
 import HomePage from '../screens/Home';
@@ -10,7 +13,7 @@ import {
 } from '../components';
 
 const Routes = () => (
-  <BrowserRouter>
+  <ConnectedRouter history={history}>
     <Navbar />
     <Body>
       <LeftMenu />
@@ -23,7 +26,7 @@ const Routes = () => (
       </Content>
     </Body>
     <Modals />
-  </BrowserRouter>
+  </ConnectedRouter>
 );
 
 export default Routes;
